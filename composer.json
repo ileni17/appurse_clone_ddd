@@ -10,7 +10,9 @@
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.13",
         "nelmio/cors-bundle": "^2.2",
+        "nesbot/carbon": "^2.63",
         "ramsey/uuid": "^4.6",
+        "ramsey/uuid-doctrine": "^1.8",
         "sensio/framework-extra-bundle": "^6.2",
         "symfony/console": "6.1.*",
         "symfony/dotenv": "6.1.*",
@@ -25,6 +27,7 @@
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^7.1",
+        "qossmic/deptrac-shim": "^1.0",
         "symfony/debug-bundle": "6.1.*",
         "symfony/maker-bundle": "^1.48",
         "symfony/stopwatch": "6.1.*",

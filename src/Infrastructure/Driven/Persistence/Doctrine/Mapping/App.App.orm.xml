@@ -1,0 +1,18 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Domain\App\App" table="apps">
+        <id name="id" column="id" type="appId" />
+        <embedded name="identificator" class="App\Domain\App\VO\AppGooglePlayId" use-column-prefix="false" />
+        <embedded name="name" class="App\Domain\App\VO\AppName" use-column-prefix="false" />
+        <embedded name="description" class="App\Domain\App\VO\AppDescription" use-column-prefix="false" />
+        <embedded name="score" class="App\Domain\App\VO\AppScore" use-column-prefix="false" />
+        <embedded name="url" class="App\Domain\App\VO\AppUrl" use-column-prefix="false" />
+        <embedded name="icon" class="App\Domain\App\VO\AppIcon" use-column-prefix="false" />
+        <many-to-one field="category" target-entity="App\Domain\App\AppCategory">
+            <join-column name="category_id" referenced-column-name="id" />
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

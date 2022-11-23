@@ -1,0 +1,6 @@
+errors:
+  app:
+    app_name_to_short: 'App name must be at least 2 characters long'
+    app_category_name_to_short: 'App category name must be at least 2 characters long'
+    app_score_must_be_zero_or_positive_integer: 'App score must be greater than 0'
+

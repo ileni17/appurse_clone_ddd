@@ -1,0 +1,6 @@
+doctrine:
+  dbal:
+    types:
+      uuid: 'Ramsey\Uuid\Doctrine\UuidType'
+      appId: 'App\Infrastructure\Driven\DatabaseIdentifier\Doctrine\AppIdType'
+      appCategoryId: 'App\Infrastructure\Driven\DatabaseIdentifier\Doctrine\AppCategoryIdType'
