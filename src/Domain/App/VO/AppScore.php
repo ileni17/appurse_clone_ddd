@@ -10,7 +10,7 @@ use Assert\AssertionFailedException;
 
 final class AppScore
 {
-    public function __construct(private string $score)
+    public function __construct(private float $score)
     {
         try {
             Assertion::greaterOrEqualThan($this->score, 0);
@@ -21,6 +21,6 @@ final class AppScore
 
     public function __toString(): string
     {
-        return $this->score;
+        return (string) $this->score;
     }
 }

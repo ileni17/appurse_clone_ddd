@@ -12,6 +12,10 @@ security:
         main:
             lazy: true
             provider: users_in_memory
+        common:
+            stateless: true
+            pattern: ^/common/v1/apps
+            security: false
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

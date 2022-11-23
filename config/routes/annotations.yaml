@@ -1,0 +1,4 @@
+common_v1:
+  resource: ../../src/Infrastructure/Driving/Common/v1/
+  type: annotation
+  prefix: /common/v1
