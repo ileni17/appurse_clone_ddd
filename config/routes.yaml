@@ -1,8 +1,4 @@
 #controllers:
 #    resource: ../src/Controller/
 #    type: attribute
-common_v1:
-  resource: ../../src/Infrastructure/Driving/Common/v1/
-  type: attribute
-  prefix: /common/v1
 

@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Undabot\JsonApi\Definition\Model\Request\GetResourceRequestInterface;
 use Undabot\SymfonyJsonApi\Http\Model\Response\ResourceResponse;
+use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 final class GetAppInformationController
 {

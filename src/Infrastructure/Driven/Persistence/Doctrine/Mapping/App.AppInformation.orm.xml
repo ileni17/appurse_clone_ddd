@@ -1,0 +1,21 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Domain\App\AppInformation" table="app_information">
+        <indexes>
+            <index name="search_idx" columns="identificator"/>
+        </indexes>
+        <unique-constraints>
+            <unique-constraint columns="identificator" name="unique_app_idx" />
+        </unique-constraints>
+        <id name="id" column="id" type="appInformationId" />
+        <embedded name="identificator" class="App\Domain\App\VO\Identificator" use-column-prefix="false" />
+        <embedded name="name" class="App\Domain\App\VO\Name" use-column-prefix="false" />
+        <embedded name="description" class="App\Domain\App\VO\Description" use-column-prefix="false" />
+        <embedded name="score" class="App\Domain\App\VO\Score" use-column-prefix="false" />
+        <embedded name="url" class="App\Domain\App\VO\Url" use-column-prefix="false" />
+        <embedded name="icon" class="App\Domain\App\VO\Icon" use-column-prefix="false" />
+    </entity>
+</doctrine-mapping>

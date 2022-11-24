@@ -6,6 +6,8 @@ namespace App\Infrastructure\Driving\Common\v1\Model\App;
 
 use App\Domain\App\AppInformation;
 use Undabot\SymfonyJsonApi\Model\ApiModel;
+use Undabot\SymfonyJsonApi\Model\Resource\Annotation\Attribute;
+use Undabot\SymfonyJsonApi\Service\Resource\Validation\Constraint\ResourceType;
 
 /**
  * @ResourceType(type="app-information")

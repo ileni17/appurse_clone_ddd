@@ -13,15 +13,6 @@ services:
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    App\:
-        resource: '../src/'
-        exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
-            - '../src/Kernel.php'
-
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -29,5 +20,44 @@ services:
         resource: '../src/Infrastructure/Driving/Common/v1/Endpoint/*'
         tags: [ 'controller.service_arguments' ]
 
+    App\Infrastructure\Driving\Common\v1\ApiResponder\:
+        resource: '../src/Infrastructure/Driving/Common/v1/ApiResponder/*'
+
+    # Application services - Command, Query and Event handlers and Bus configuration
+    App\Application\Bus\QueryBus:
+        alias: App\Infrastructure\Driven\Bus\MessengerQueryBus
+
+    App\Application\Bus\CommandBus:
+        alias: App\Infrastructure\Driven\Bus\MessengerCommandBus
+
+    App\Application\Bus\EventBus:
+        alias: App\Infrastructure\Driven\Bus\MessengerEventBus
+
+    # Buses
+    App\Infrastructure\Driven\Bus\:
+        resource: '../src/Infrastructure/Driven/Bus/*'
+
+    # Error handler
+    App\Infrastructure\Driven\JsonApi\ErrorHandler: ~
+
     # Repositories
-    App\Application\Repository\Word\WordInformationReadRepository: '@App\Infrastructure\Driven\Persistence\Doctrine\Repository\DoctrineAppInformationReadRepository'
+    App\Infrastructure\Driven\Persistence\Doctrine\Repository\:
+        resource: '../src/Infrastructure/Driven/Persistence/Doctrine/Repository/*'
+
+    App\Application\Repository\:
+        resource: '../src/Application/Repository/*'
+
+    App\Application\Repository\App\AppInformationReadRepository: '@App\Infrastructure\Driven\Persistence\Doctrine\Repository\DoctrineAppInformationReadRepository'
+    App\Application\Repository\App\AppInformationWriteRepository: '@App\Infrastructure\Driven\Persistence\Doctrine\Repository\DoctrineAppInformationWriteRepository'
+    App\Application\Repository\UserManagement\AuthenticationAccountReadRepository: '@App\Infrastructure\Driven\Persistence\Doctrine\Repository\DoctrineAuthenticationAccountReadRepository'
+    App\Application\Repository\UserManagement\AuthenticationAccountWriteRepository: '@App\Infrastructure\Driven\Persistence\Doctrine\Repository\DoctrineAuthenticationAccountWriteRepository'
+    App\Application\Repository\Warehouse\ProductReadRepository: '@App\Infrastructure\Driven\Persistence\Doctrine\Repository\DoctrineProductReadRepository'
+    App\Application\Repository\Warehouse\ProductWriteRepository: '@App\Infrastructure\Driven\Persistence\Doctrine\Repository\DoctrineProductWriteRepository'
+
+    # App Information
+    App\Infrastructure\Driven\AppInformation\AppInformationProvider: ~
+    App\Application\AppInformation\AppInformationFetcher: '@App\Infrastructure\Driven\AppInformation\AppInformationProvider'
+
+    # HTTP client
+    App\Infrastructure\Driven\Client\Http\GooglePlay\GooglePlayScraperClient:
+    App\Application\Client\Http\IssueCount\IssueClient: '@App\Infrastructure\Driven\Client\Http\GooglePlay\GooglePlayScraperClient'
