@@ -11,7 +11,7 @@ use Undabot\SymfonyJsonApi\Model\Resource\Annotation\ToOne;
 use Undabot\SymfonyJsonApi\Service\Resource\Validation\Constraint\ResourceType;
 
 /**
- * @ResourceType(type="product-variants")
+ * @ResourceType(type="apps")
  * @psalm-immutable
  */
 final class AppReadModel implements ApiModel
@@ -32,9 +32,8 @@ final class AppReadModel implements ApiModel
         public string $description,
         /**
          * @Attribute
-         * @Assert\Type("float")
          */
-        public float $score,
+        public string $score,
         /**
          * @Attribute
          */
@@ -42,11 +41,7 @@ final class AppReadModel implements ApiModel
         /**
          * @Attribute
          */
-        public string $icon,
-        /**
-         * @ToOne(name="appCategory", type="category")
-         */
-        public string $category,
+        public string $icon
     ) {
     }
 
@@ -57,10 +52,9 @@ final class AppReadModel implements ApiModel
             (string) $app->identificator(),
             (string) $app->name(),
             (string) $app->description(),
-            (float) $app->score(),
+            (string) $app->score(),
             (string) $app->url(),
-            (string) $app->icon(),
-            (string) $app->category()->identificator(),
+            (string) $app->icon()
         );
     }
 }

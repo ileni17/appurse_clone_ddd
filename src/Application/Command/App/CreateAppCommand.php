@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Application\Command\App;
 
 use App\Application\Command\Command;
-use App\Domain\App\AppCategoryId;
 use App\Domain\App\AppId;
 use App\Domain\App\VO\AppDescription;
 use App\Domain\App\VO\AppGooglePlayId;
@@ -24,8 +23,7 @@ final class CreateAppCommand implements Command
         public AppDescription $description,
         public AppScore $score,
         public AppUrl $url,
-        public AppIcon $icon,
-        public AppCategoryId $categoryId
+        public AppIcon $icon
     ) {
     }
 }

@@ -24,5 +24,29 @@ services:
         resource: '../src/Infrastructure/Driving/Common/v1/Endpoint/*'
         tags: [ 'controller.service_arguments' ]
 
+    # Application services - Command, Query and Event handlers and Bus configuration
+    App\Application\CommandHandler\:
+        resource: '../src/Application/CommandHandler/*'
+        autoconfigure: false
+        tags:
+            - { name: messenger.message_handler, bus: command.bus }
+
+    App\Application\Bus\QueryBus:
+        alias: App\Infrastructure\Driven\Bus\MessengerQueryBus
+
+    App\Application\Bus\CommandBus:
+        alias: App\Infrastructure\Driven\Bus\MessengerCommandBus
+
+    App\Application\Bus\EventBus:
+        alias: App\Infrastructure\Driven\Bus\MessengerEventBus
+
+    # Repositories
+    App\Infrastructure\Driven\Persistence\Doctrine\Repository\:
+        resource: '../src/Infrastructure/Driven/Persistence/Doctrine/Repository/*'
+
+    App\Application\Repository\App\AppReadRepository: '@App\Infrastructure\Driven\Persistence\Doctrine\Repository\DoctrineAppReadRepository'
+    App\Application\Repository\App\AppWriteRepository: '@App\Infrastructure\Driven\Persistence\Doctrine\Repository\DoctrineAppWriteRepository'
+
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

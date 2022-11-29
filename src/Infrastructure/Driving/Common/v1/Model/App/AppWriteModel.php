@@ -43,11 +43,7 @@ final class AppWriteModel implements ApiModel
         /**
          * @Attribute
          */
-        public string $icon,
-        /**
-         * @ToOne(name="app_category", type="category")
-         */
-        public string $category,
+        public string $icon
     ) {
     }
 }

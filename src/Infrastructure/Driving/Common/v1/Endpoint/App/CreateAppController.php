@@ -37,6 +37,7 @@ final class CreateAppController
         /** @var AppWriteModel $appWriteModel */
         $appWriteModel = $resourceHandler->getModelFromRequest($request, AppWriteModel::class);
         $appId = $appReadRepository->nextId();
+
         $commandBus->handleCommand(new CreateAppCommand(
             $appId,
             new AppGooglePlayId($appWriteModel->identificator),
@@ -44,8 +45,7 @@ final class CreateAppController
             new AppDescription($appWriteModel->name),
             new AppScore($appWriteModel->score),
             new AppUrl($appWriteModel->url),
-            new AppIcon($appWriteModel->icon),
-            AppCategoryId::fromString((string) Ulid::fromString($appWriteModel->category)),
+            new AppIcon($appWriteModel->icon)
         ));
 
         return $responder->resourceCreated($appReadRepository->get($appId));

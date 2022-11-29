@@ -20,8 +20,7 @@ class App
         private AppDescription $description,
         private AppScore $score,
         private AppUrl $url,
-        private AppIcon $icon,
-        private AppCategory $category
+        private AppIcon $icon
     ) {
     }
 
@@ -58,11 +57,6 @@ class App
     public function icon(): AppIcon
     {
         return $this->icon;
-    }
-
-    public function category(): AppCategory
-    {
-        return $this->category;
     }
 
     public function update(

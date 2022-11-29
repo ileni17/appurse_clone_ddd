@@ -11,8 +11,5 @@
         <embedded name="score" class="App\Domain\App\VO\AppScore" use-column-prefix="false" />
         <embedded name="url" class="App\Domain\App\VO\AppUrl" use-column-prefix="false" />
         <embedded name="icon" class="App\Domain\App\VO\AppIcon" use-column-prefix="false" />
-        <many-to-one field="category" target-entity="App\Domain\App\AppCategory">
-            <join-column name="category_id" referenced-column-name="id" />
-        </many-to-one>
     </entity>
 </doctrine-mapping>
